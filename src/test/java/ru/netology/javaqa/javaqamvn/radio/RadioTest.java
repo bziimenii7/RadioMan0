@@ -79,4 +79,42 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @ParameterizedTest
+    @CsvFileSource(files="src/test/resources/currentStationSizeTwenty.csv")
+    public void shouldCurrentStationSizeTwenty(int station, int expected) {
+        ru.netology.javaqa.javaqamvn.radio.Radio rad = new ru.netology.javaqa.javaqamvn.radio.Radio(20);
+
+        rad.setCurrentStation(station);
+
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files="src/test/resources/nextStationSizeTwenty.csv")
+    public void switchNextStationSizeTwenty(int station, int expected) {
+        ru.netology.javaqa.javaqamvn.radio.Radio rad = new ru.netology.javaqa.javaqamvn.radio.Radio(20);
+
+        rad.setCurrentStation(station);
+        rad.nextStation();
+
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files="src/test/resources/prevStationSizeTwenty.csv")
+    public void switchPrevStationSizeTwenty(int station, int expected) {
+        ru.netology.javaqa.javaqamvn.radio.Radio rad = new ru.netology.javaqa.javaqamvn.radio.Radio(20);
+
+        rad.setCurrentStation(station);
+        rad.prevStation();
+
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
